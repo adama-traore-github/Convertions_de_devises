@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Currency Converter',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const CurrencyConverterPage(),
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false, // Supprime le badge DEBUG.
     );
   }
 }
@@ -30,9 +30,9 @@ class CurrencyConverterPage extends StatefulWidget {
 class CurrencyConverterPageState extends State<CurrencyConverterPage> {
   final TextEditingController _amountController = TextEditingController();
   String _convertedAmount = '';
-  String _fromCurrency = 'USD';
-  String _toCurrency = 'EUR';
-  final String apiKey = '0a2b9a31d496fe2ea770268d'; // Ta clé API
+  String _fromCurrency = 'XOF'; // Devise source par défaut.
+  String _toCurrency = 'EUR'; // Devise cible par défaut.
+  final String apiKey = '0a2b9a31d496fe2ea770268d'; // Ta clé API.
 
   Future<void> _convertCurrency() async {
     try {
@@ -91,7 +91,7 @@ class CurrencyConverterPageState extends State<CurrencyConverterPage> {
             const Text('From Currency:'),
             DropdownButton<String>(
               value: _fromCurrency,
-              items: ['USD', 'EUR', 'GBP', 'JPY']
+              items: ['XOF', 'XAF', 'USD', 'EUR'] 
                   .map((currency) => DropdownMenuItem(
                         value: currency,
                         child: Text(currency),
@@ -107,7 +107,7 @@ class CurrencyConverterPageState extends State<CurrencyConverterPage> {
             const Text('To Currency:'),
             DropdownButton<String>(
               value: _toCurrency,
-              items: ['USD', 'EUR', 'GBP', 'JPY']
+              items: ['XOF', 'XAF', 'USD', 'EUR'] // Ajoute 'XOF' ici.
                   .map((currency) => DropdownMenuItem(
                         value: currency,
                         child: Text(currency),
